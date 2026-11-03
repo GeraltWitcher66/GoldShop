@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فروشگاه | طلای مهرگان</title>
+    <meta name="description" content="خرید اینترنتی طلا و جواهر با فیلتر دسته‌بندی، عیار، جنس و بازهٔ قیمت.">
+    <meta name="theme-color" content="#14110d">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Vazirmatn', 'Tahoma', 'sans-serif'] },
+                    colors: {
+                        gold: { 50:'#fdfaf2', 100:'#f9f0dc', 200:'#f2dfb6', 300:'#e9c67c', 400:'#dcae4f', 500:'#c9913a', 600:'#a9741f', 700:'#87591a', 800:'#6b461b', 900:'#573a1a' },
+                        ink:  { 50:'#f6f5f3', 100:'#eae7e1', 200:'#d5cfc4', 300:'#b3aa9a', 400:'#8b8172', 500:'#6b6255', 600:'#514a41', 700:'#3b3630', 800:'#24211d', 900:'#14110d' },
+                        cream:'#faf7f1'
+                    },
+                    boxShadow: {
+                        soft: '0 10px 40px -18px rgba(20,17,13,.35)',
+                        card: '0 20px 50px -30px rgba(20,17,13,.55)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body class="bg-cream font-sans text-ink-800 antialiased selection:bg-gold-300 selection:text-ink-900">
+
+<!-- نوار بالا: نرخ طلا و اطلاعیه -->
+<div class="bg-ink-900 text-ink-200 text-[13px]">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-10 flex items-center justify-between gap-4">
+        <div class="flex items-center gap-2 overflow-hidden">
+            <span class="inline-block h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span class="text-ink-300 hidden sm:inline">نرخ لحظه‌ای طلا:</span>
+            <span class="text-gold-300 font-semibold" id="goldRate">۵٬۲۵۰٬۰۰۰</span>
+            <span class="text-ink-400">تومان / هر گرم ۱۸ عیار</span>
+        </div>
+        <div class="flex items-center gap-4">
+            <a href="tel:+982191001234" class="hidden sm:inline hover:text-gold-300 transition">پشتیبانی: ۰۲۱-۹۱۰۰ ۱۲۳۴</a>
+            <a href="orders.html" class="hover:text-gold-300 transition">پیگیری سفارش</a>
+        </div>
+    </div>
+</div>
+
+<!-- هدر اصلی -->
+<header id="siteHeader" class="sticky top-0 z-40 bg-cream/85 backdrop-blur border-b border-ink-100 transition-shadow">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="h-[74px] flex items-center gap-3 sm:gap-6">
+
+            <!-- لوگو -->
+            <a href="index.html" class="flex items-center gap-3 shrink-0 group">
+                <span class="grid place-items-center h-11 w-11 rounded-2xl bg-gradient-to-br from-gold-300 via-gold-400 to-gold-600 text-ink-900 font-black text-lg shadow-soft group-hover:rotate-6 transition-transform">م</span>
+                <span class="leading-tight">
+                    <span class="block font-extrabold text-lg text-ink-900">طلای مهرگان</span>
+                    <span class="block text-[11px] text-ink-400 tracking-wide">طلافروشی و جواهرات دست‌ساز</span>
+                </span>
+            </a>
+
+            <!-- منوی دسکتاپ -->
+            <nav class="hidden lg:flex items-center gap-1 me-auto">
+                <a href="index.html" class="px-3 py-2 rounded-lg text-sm font-medium text-ink-600 hover:text-ink-900 hover:bg-ink-50 transition ">خانه</a>
+                <a href="products.html" class="px-3 py-2 rounded-lg text-sm font-medium text-ink-600 hover:text-ink-900 hover:bg-ink-50 transition ">فروشگاه</a>
+                <a href="products.html?cat=%D8%B3%D8%AA%20%D8%B7%D9%84%D8%A7" class="px-3 py-2 rounded-lg text-sm font-medium text-ink-600 hover:text-ink-900 hover:bg-ink-50 transition">ست طلا</a>
+                <a href="orders.html" class="px-3 py-2 rounded-lg text-sm font-medium text-ink-600 hover:text-ink-900 hover:bg-ink-50 transition ">سفارش‌های من</a>
+                            </nav>
+
+            <!-- جست‌وجو -->
+            <form action="products.html" method="get" class="hidden md:flex items-center flex-1 max-w-sm ms-auto lg:ms-0">
+                <div class="relative w-full">
+                    <input type="search" name="q" value="" placeholder="جست‌وجوی انگشتر، گردنبند، کد کالا..."
+                           class="w-full h-11 rounded-xl border border-ink-200 bg-white ps-10 pe-4 text-sm placeholder:text-ink-400 focus:border-gold-400 focus:ring-4 focus:ring-gold-200/60 outline-none transition">
+                    <span class="pointer-events-none absolute inset-y-0 start-3 flex items-center text-ink-400">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
+                    </span>
+                </div>
+            </form>
+
+            <div class="flex items-center gap-1 ms-auto md:ms-0">
+                <!-- حساب کاربری -->
+                                    <a href="login.html" id="accountLink" class="hidden sm:grid place-items-center h-11 w-11 rounded-xl hover:bg-ink-100 text-ink-600 transition relative" title="حساب کاربری">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg>
+                    </a>
+                
+                <!-- سبد خرید -->
+                <a href="cart.html" class="grid place-items-center h-11 w-11 rounded-xl hover:bg-ink-100 text-ink-600 transition relative" title="سبد خرید">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 7h12l1.4 12.2a2 2 0 0 1-2 2.2H6.6a2 2 0 0 1-2-2.2z"/><path d="M9 10V6a3 3 0 0 1 6 0v4"/></svg>
+                    <span data-cart-count class="absolute -top-1 -start-1 min-w-[20px] h-5 px-1 grid place-items-center rounded-full bg-ink-200 text-ink-600 text-[11px] font-bold">۰</span>
+                </a>
+
+                <!-- منوی موبایل -->
+                <button type="button" id="menuBtn" class="lg:hidden grid place-items-center h-11 w-11 rounded-xl hover:bg-ink-100 text-ink-600 transition" aria-label="منو">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- جست‌وجوی موبایل -->
+        <form action="products.html" method="get" class="md:hidden pb-3">
+            <input type="search" name="q" value="" placeholder="جست‌وجوی محصول..."
+                   class="w-full h-11 rounded-xl border border-ink-200 bg-white px-4 text-sm placeholder:text-ink-400 focus:border-gold-400 focus:ring-4 focus:ring-gold-200/60 outline-none transition">
+        </form>
+    </div>
+</header>
+
+<!-- کشوی موبایل -->
+<div id="mobileMenu" class="fixed inset-0 z-50 hidden">
+    <div class="absolute inset-0 bg-ink-900/50 backdrop-blur-sm" data-close-menu></div>
+    <aside class="absolute inset-y-0 start-0 w-[82%] max-w-xs bg-cream shadow-2xl p-5 flex flex-col gap-1 slide-in">
+        <div class="flex items-center justify-between mb-4">
+            <span class="font-extrabold text-ink-900">منو</span>
+            <button type="button" class="h-9 w-9 grid place-items-center rounded-lg hover:bg-ink-100" data-close-menu aria-label="بستن">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+            </button>
+        </div>
+        <a href="index.html" class="px-3 py-3 rounded-xl hover:bg-ink-100 font-medium">خانه</a>
+        <a href="products.html" class="px-3 py-3 rounded-xl hover:bg-ink-100 font-medium">فروشگاه</a>
+        <a href="cart.html" class="px-3 py-3 rounded-xl hover:bg-ink-100 font-medium">سبد خرید</a>
+        <a href="orders.html" class="px-3 py-3 rounded-xl hover:bg-ink-100 font-medium">سفارش‌های من</a>
+                    <a href="login.html" class="px-3 py-3 rounded-xl hover:bg-ink-100 font-medium">ورود / ثبت‌نام</a>
+                        <div class="mt-auto pt-4 border-t border-ink-100 text-sm text-ink-500 leading-7">
+            ۰۲۱-۹۱۰۰ ۱۲۳۴<br>تهران، خیابان ولیعصر، نبش کوچهٔ ۱۲، پلاک ۴۵        </div>
+    </aside>
+</div>
+
+<main>
+
+<!-- هدر صفحه -->
+<section class="bg-ink-900 text-white">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 lg:py-14">
+        <nav class="text-xs text-ink-400 flex items-center gap-2">
+            <a href="index.html" class="hover:text-gold-300 transition">خانه</a>
+            <span>/</span>
+            <span class="text-ink-200">فروشگاه</span>
+        </nav>
+
+        <div class="mt-5 flex flex-wrap items-end justify-between gap-6">
+            <div>
+                <h1 class="text-3xl sm:text-4xl font-black">
+                    همهٔ محصولات                </h1>
+                <p class="text-ink-400 text-sm mt-2 leading-8">
+                    ۱۲ مدل طلا و جواهر · مجموع وزن ۵۴.۷ گرم
+                </p>
+            </div>
+
+            <div class="flex items-center gap-2">
+                <label for="sortSelect" class="text-xs text-ink-400">مرتب‌سازی:</label>
+                <select id="sortSelect" class="h-11 rounded-xl bg-white/5 border border-white/15 text-white text-sm px-4 outline-none focus:border-gold-400 transition">
+                    <option value="default" class="text-ink-900" selected>پیشنهاد مهرگان</option>
+                    <option value="price-asc" class="text-ink-900" >ارزان‌ترین</option>
+                    <option value="price-desc" class="text-ink-900" >گران‌ترین</option>
+                    <option value="rating" class="text-ink-900" >محبوب‌ترین</option>
+                    <option value="new" class="text-ink-900" >جدیدترین</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 lg:py-12 grid lg:grid-cols-[280px_1fr] gap-8" data-product-grid-page>
+
+    <!-- ======== سایدبار فیلتر ======== -->
+    <aside id="filterPanel" class="hidden lg:block">
+        <div class="sticky top-24 rounded-3xl bg-white border border-ink-100 shadow-card p-5 space-y-6">
+
+            <div class="flex items-center justify-between">
+                <h2 class="font-extrabold text-ink-900">فیلترها</h2>
+                <button type="button" id="clearFilters" class="text-xs font-bold text-gold-700 hover:text-gold-500 transition">حذف همه</button>
+            </div>
+
+            <!-- جست‌وجو -->
+            <div>
+                <label class="lbl" for="sideSearch">جست‌وجو</label>
+                <input id="sideSearch" type="search" value="" placeholder="نام یا کد محصول..."
+                       class="field" oninput="document.getElementById('catalogQ').value=this.value; document.getElementById('catalogQ').dispatchEvent(new Event('input'))">
+            </div>
+
+            <!-- دسته‌بندی -->
+            <fieldset>
+                <legend class="lbl">دسته‌بندی</legend>
+                <div class="space-y-2">
+                                            <label class="flex items-center justify-between gap-2 text-sm text-ink-600 hover:text-ink-900 cursor-pointer">
+                            <span class="flex items-center gap-2">
+                                <input type="checkbox" data-filter-cat value="انگشتر"
+                                        class="w-4 h-4 accent-gold-500">
+                                انگشتر                            </span>
+                            <span class="text-xs text-ink-400">۳</span>
+                        </label>
+                                            <label class="flex items-center justify-between gap-2 text-sm text-ink-600 hover:text-ink-900 cursor-pointer">
+                            <span class="flex items-center gap-2">
+                                <input type="checkbox" data-filter-cat value="گردنبند"
+                                        class="w-4 h-4 accent-gold-500">
+                                گردنبند                            </span>
+                            <span class="text-xs text-ink-400">۳</span>
+                        </label>
+                                            <label class="flex items-center justify-between gap-2 text-sm text-ink-600 hover:text-ink-900 cursor-pointer">
+                            <span class="flex items-center gap-2">
+                                <input type="checkbox" data-filter-cat value="دستبند"
+                                        class="w-4 h-4 accent-gold-500">
+                                دستبند                            </span>
+                            <span class="text-xs text-ink-400">۲</span>
+                        </label>
+                                            <label class="flex items-center justify-between gap-2 text-sm text-ink-600 hover:text-ink-900 cursor-pointer">
+                            <span class="flex items-center gap-2">
+                                <input type="checkbox" data-filter-cat value="گوشواره"
+                                        class="w-4 h-4 accent-gold-500">
+                                گوشواره                            </span>
+                            <span class="text-xs text-ink-400">۲</span>
+                        </label>
+                                            <label class="flex items-center justify-between gap-2 text-sm text-ink-600 hover:text-ink-900 cursor-pointer">
+                            <span class="flex items-center gap-2">
+                                <input type="checkbox" data-filter-cat value="پابند"
+                                        class="w-4 h-4 accent-gold-500">
+                                پابند                            </span>
+                            <span class="text-xs text-ink-400">۱</span>
+                        </label>
+                                            <label class="flex items-center justify-between gap-2 text-sm text-ink-600 hover:text-ink-900 cursor-pointer">
+                            <span class="flex items-center gap-2">
+                                <input type="checkbox" data-filter-cat value="ست طلا"
+                                        class="w-4 h-4 accent-gold-500">
+                                ست طلا                            </span>
+                            <span class="text-xs text-ink-400">۱</span>
+                        </label>
+                                    </div>
+            </fieldset>
+
+            <!-- جنس -->
+            <fieldset>
+                <legend class="lbl">جنس</legend>
+                <div class="flex flex-wrap gap-2">
+                                            <label class="cursor-pointer">
+                            <input type="checkbox" data-filter-metal value="زرد" class="peer sr-only">
+                            <span class="inline-flex items-center gap-1.5 rounded-xl border border-ink-200 px-3 py-1.5 text-xs font-bold text-ink-600 transition peer-checked:bg-ink-900 peer-checked:text-gold-300 peer-checked:border-ink-900 hover:border-gold-400">
+                                <span class="h-3 w-3 rounded-full bg-gold-400"></span>
+                                زرد                            </span>
+                        </label>
+                                            <label class="cursor-pointer">
+                            <input type="checkbox" data-filter-metal value="سفید" class="peer sr-only">
+                            <span class="inline-flex items-center gap-1.5 rounded-xl border border-ink-200 px-3 py-1.5 text-xs font-bold text-ink-600 transition peer-checked:bg-ink-900 peer-checked:text-gold-300 peer-checked:border-ink-900 hover:border-gold-400">
+                                <span class="h-3 w-3 rounded-full bg-ink-200"></span>
+                                سفید                            </span>
+                        </label>
+                                            <label class="cursor-pointer">
+                            <input type="checkbox" data-filter-metal value="رزگلد" class="peer sr-only">
+                            <span class="inline-flex items-center gap-1.5 rounded-xl border border-ink-200 px-3 py-1.5 text-xs font-bold text-ink-600 transition peer-checked:bg-ink-900 peer-checked:text-gold-300 peer-checked:border-ink-900 hover:border-gold-400">
+                                <span class="h-3 w-3 rounded-full bg-rose-300"></span>
+                                رزگلد                            </span>
+                        </label>
+                                    </div>
+            </fieldset>
+
+            <!-- عیار -->
+            <fieldset>
+                <legend class="lbl">عیار</legend>
+                <div class="flex gap-2">
+                                            <label class="flex-1 cursor-pointer">
+                            <input type="checkbox" data-filter-karat value="۱۸" class="peer sr-only">
+                            <span class="block text-center rounded-xl border border-ink-200 px-3 py-2 text-xs font-bold text-ink-600 transition peer-checked:bg-ink-900 peer-checked:text-gold-300 peer-checked:border-ink-900 hover:border-gold-400">
+                                ۱۸ عیار
+                            </span>
+                        </label>
+                                            <label class="flex-1 cursor-pointer">
+                            <input type="checkbox" data-filter-karat value="۲۱" class="peer sr-only">
+                            <span class="block text-center rounded-xl border border-ink-200 px-3 py-2 text-xs font-bold text-ink-600 transition peer-checked:bg-ink-900 peer-checked:text-gold-300 peer-checked:border-ink-900 hover:border-gold-400">
+                                ۲۱ عیار
+                            </span>
+                        </label>
+                                    </div>
+            </fieldset>
+
+            <!-- بازهٔ قیمت -->
+            <div>
+                <label class="lbl" for="priceRange">حداکثر قیمت</label>
+                <input id="priceRange" type="range" min="10000000" max="53000000" step="1000000"
+                       value="53000000" data-max-price="53000000" class="range w-full">
+                <div id="priceLabel" class="text-xs text-ink-500 mt-2 text-center font-bold"></div>
+            </div>
+
+            <div class="rounded-2xl bg-gold-50 border border-gold-200 p-4 text-xs leading-7 text-gold-800">
+                همهٔ کالاها دارای شناسهٔ آزمایشگاهی هستند و قیمت بر اساس <b>نرخ روز + اجرت ساخت</b> محاسبه می‌شود.
+            </div>
+        </div>
+    </aside>
+
+    <!-- ======== گرید محصولات ======== -->
+    <section>
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
+            <div class="text-sm text-ink-500">
+                <span id="resultCount" class="font-extrabold text-ink-900">۰</span> محصول یافت شد
+                            </div>
+            <button type="button" id="filterToggle"
+                    class="lg:hidden inline-flex items-center gap-2 h-11 px-4 rounded-xl bg-white border border-ink-200 text-sm font-bold text-ink-700">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+                فیلترها
+            </button>
+        </div>
+
+        <!-- مقادیر اولیه برای جاوااسکریپت -->
+        <input type="hidden" id="catalogQ" data-q value="">
+        <input type="hidden" data-cat value="">
+
+        <div data-product-grid class="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                                <article class="product-card group bg-white rounded-3xl overflow-hidden border border-ink-100 shadow-card reveal"
+             data-sku="R-101" data-cat="انگشتر" data-name="انگشتر سولیتر نگین‌دار"
+             data-price="22500000" data-stock="3" data-rating="4.9"
+             data-metal="زرد" data-karat="18" data-date="1">
+        <div class="relative overflow-hidden bg-cream">
+            <img src="assets/img/products/R-101.jpg" alt="انگشتر سولیتر نگین‌دار" loading="lazy"
+                 class="product-img w-full aspect-square object-cover ">
+            <span class="absolute top-3 start-3 rounded-full bg-rose-600 text-white text-[11px] font-bold px-2.5 py-1">۱۰٪ تخفیف</span>
+            <button type="button"
+                    class="absolute bottom-3 end-3 h-10 w-10 grid place-items-center rounded-full bg-white/90 text-ink-700 shadow-soft opacity-0 group-hover:opacity-100 transition hover:text-rose-500 focus:opacity-100"
+                    title="افزودن به علاقه‌مندی‌ها" data-wish>
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.4-7-9.3A4 4 0 0 1 12 8a4 4 0 0 1 7 2.7C19 15.6 12 20 12 20z"/></svg>
+            </button>
+            
+        </div>
+        <div class="p-5">
+            <div class="flex items-center justify-between text-[11px] text-ink-400 mb-2">
+                <span class="rounded-md bg-ink-50 px-2 py-0.5">انگشتر</span>
+                <span>کد R-101</span>
+            </div>
+            <h3 class="font-bold text-ink-900 leading-7 line-clamp-2 min-h-[3.5rem]">
+                <a href="product-R-101.html" class="hover:text-gold-600 transition">انگشتر سولیتر نگین‌دار</a>
+            </h3>
+            <div class="flex items-center gap-2 mt-2 text-xs text-ink-400">
+                <span class="stars" style="--rating:4.9"></span>
+                <span>۴.۹</span>
+                <span class="text-ink-300">|</span>
+                <span>۱۲۸ نظر</span>
+            </div>
+            <div class="mt-4 flex items-end justify-between gap-2">
+                <div>
+                    <div class="text-xs text-ink-400 line-through">۲۴٬۹۰۰٬۰۰۰</div>
+                    <div class="price-now font-extrabold text-ink-900">۲۲٬۵۰۰٬۰۰۰ <span class="text-xs font-medium text-ink-500">تومان</span></div>
+                </div>
+                <button type="button" data-add="R-101"  class="h-10 px-4 rounded-xl text-sm font-bold transition bg-ink-900 text-gold-300 hover:bg-gold-500 hover:text-ink-900">
+                    افزودن
+                </button>
+            </div>
+        </div>
+    </article>                                <article class="product-card group bg-white rounded-3xl overflow-hidden border border-ink-100 shadow-card reveal"
+             data-sku="R-102" data-cat="انگشتر" data-name="انگشتر نامزدی رزگلد ظریف"
+             data-price="18900000" data-stock="5" data-rating="4.7"
+             data-metal="رزگلد" data-karat="18" data-date="2">
+        <div class="relative overflow-hidden bg-cream">
+            <img src="assets/img/products/R-102.jpg" alt="انگشتر نامزدی رزگلد ظریف" loading="lazy"
+                 class="product-img w-full aspect-square object-cover ">
+            <span class="absolute top-3 start-3 rounded-full bg-ink-900 text-white text-[11px] font-bold px-2.5 py-1">جدید</span>
+            <button type="button"
+                    class="absolute bottom-3 end-3 h-10 w-10 grid place-items-center rounded-full bg-white/90 text-ink-700 shadow-soft opacity-0 group-hover:opacity-100 transition hover:text-rose-500 focus:opacity-100"
+                    title="افزودن به علاقه‌مندی‌ها" data-wish>
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.4-7-9.3A4 4 0 0 1 12 8a4 4 0 0 1 7 2.7C19 15.6 12 20 12 20z"/></svg>
+            </button>
+            
+        </div>
+        <div class="p-5">
+            <div class="flex items-center justify-between text-[11px] text-ink-400 mb-2">
+                <span class="rounded-md bg-ink-50 px-2 py-0.5">انگشتر</span>
+                <span>کد R-102</span>
+            </div>
+            <h3 class="font-bold text-ink-900 leading-7 line-clamp-2 min-h-[3.5rem]">
+                <a href="product-R-102.html" class="hover:text-gold-600 transition">انگشتر نامزدی رزگلد ظریف</a>
+            </h3>
+            <div class="flex items-center gap-2 mt-2 text-xs text-ink-400">
+                <span class="stars" style="--rating:4.7"></span>
+                <span>۴.۷</span>
+                <span class="text-ink-300">|</span>
+                <span>۶۴ نظر</span>
+            </div>
+            <div class="mt-4 flex items-end justify-between gap-2">
+                <div>
+                    
+                    <div class="price-now font-extrabold text-ink-900">۱۸٬۹۰۰٬۰۰۰ <span class="text-xs font-medium text-ink-500">تومان</span></div>
+                </div>
+                <button type="button" data-add="R-102"  class="h-10 px-4 rounded-xl text-sm font-bold transition bg-ink-900 text-gold-300 hover:bg-gold-500 hover:text-ink-900">
+                    افزودن
+                </button>
+            </div>
+        </div>
+    </article>                                <article class="product-card group bg-white rounded-3xl overflow-hidden border border-ink-100 shadow-card reveal"
+             data-sku="R-103" data-cat="انگشتر" data-name="انگشتر کلاسیک عیار ۲۱"
+             data-price="33500000" data-stock="2" data-rating="4.8"
+             data-metal="زرد" data-karat="21" data-date="3">
+        <div class="relative overflow-hidden bg-cream">
+            <img src="assets/img/products/R-103.jpg" alt="انگشتر کلاسیک عیار ۲۱" loading="lazy"
+                 class="product-img w-full aspect-square object-cover ">
+            
+            <button type="button"
+                    class="absolute bottom-3 end-3 h-10 w-10 grid place-items-center rounded-full bg-white/90 text-ink-700 shadow-soft opacity-0 group-hover:opacity-100 transition hover:text-rose-500 focus:opacity-100"
+                    title="افزودن به علاقه‌مندی‌ها" data-wish>
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.4-7-9.3A4 4 0 0 1 12 8a4 4 0 0 1 7 2.7C19 15.6 12 20 12 20z"/></svg>
+            </button>
+            
+        </div>
+        <div class="p-5">
+            <div class="flex items-center justify-between text-[11px] text-ink-400 mb-2">
+                <span class="rounded-md bg-ink-50 px-2 py-0.5">انگشتر</span>
+                <span>کد R-103</span>
+            </div>
+            <h3 class="font-bold text-ink-900 leading-7 line-clamp-2 min-h-[3.5rem]">
+                <a href="product-R-103.html" class="hover:text-gold-600 transition">انگشتر کلاسیک عیار ۲۱</a>
+            </h3>
+            <div class="flex items-center gap-2 mt-2 text-xs text-ink-400">
+                <span class="stars" style="--rating:4.8"></span>
+                <span>۴.۸</span>
+                <span class="text-ink-300">|</span>
+                <span>۴۱ نظر</span>
+            </div>
+            <div class="mt-4 flex items-end justify-between gap-2">
+                <div>
+                    
+                    <div class="price-now font-extrabold text-ink-900">۳۳٬۵۰۰٬۰۰۰ <span class="text-xs font-medium text-ink-500">تومان</span></div>
+                </div>
+                <button type="button" data-add="R-103"  class="h-10 px-4 rounded-xl text-sm font-bold transition bg-ink-900 text-gold-300 hover:bg-gold-500 hover:text-ink-900">
+                    افزودن
+                </button>
+            </div>
+        </div>
+    </article>                                <article class="product-card group bg-white rounded-3xl overflow-hidden border border-ink-100 shadow-card reveal"
+             data-sku="N-201" data-cat="گردنبند" data-name="گردنبند قلب آویز نگین‌دار"
+             data-price="26400000" data-stock="6" data-rating="4.9"
+             data-metal="زرد" data-karat="18" data-date="4">
+        <div class="relative overflow-hidden bg-cream">
+            <img src="assets/img/products/N-201.jpg" alt="گردنبند قلب آویز نگین‌دار" loading="lazy"
+                 class="product-img w-full aspect-square object-cover ">
+            <span class="absolute top-3 start-3 rounded-full bg-rose-600 text-white text-[11px] font-bold px-2.5 py-1">۷٪ تخفیف</span>
+            <button type="button"
+                    class="absolute bottom-3 end-3 h-10 w-10 grid place-items-center rounded-full bg-white/90 text-ink-700 shadow-soft opacity-0 group-hover:opacity-100 transition hover:text-rose-500 focus:opacity-100"
+                    title="افزودن به علاقه‌مندی‌ها" data-wish>
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.4-7-9.3A4 4 0 0 1 12 8a4 4 0 0 1 7 2.7C19 15.6 12 20 12 20z"/></svg>
+            </button>
+            
+        </div>
+        <div class="p-5">
+            <div class="flex items-center justify-between text-[11px] text-ink-400 mb-2">
+                <span class="rounded-md bg-ink-50 px-2 py-0.5">گردنبند</span>
+                <span>کد N-201</span>
+            </div>
+            <h3 class="font-bold text-ink-900 leading-7 line-clamp-2 min-h-[3.5rem]">
+                <a href="product-N-201.html" class="hover:text-gold-600 transition">گردنبند قلب آویز نگین‌دار</a>
+            </h3>
+            <div class="flex items-center gap-2 mt-2 text-xs text-ink-400">
+                <span class="stars" style="--rating:4.9"></span>
+                <span>۴.۹</span>
+                <span class="text-ink-300">|</span>
+                <span>۲۱۲ نظر</span>
+            </div>
+            <div class="mt-4 flex items-end justify-between gap-2">
+                <div>
+                    <div class="text-xs text-ink-400 line-through">۲۸٬۵۰۰٬۰۰۰</div>
+                    <div class="price-now font-extrabold text-ink-900">۲۶٬۴۰۰٬۰۰۰ <span class="text-xs font-medium text-ink-500">تومان</span></div>
+                </div>
+                <button type="button" data-add="N-201"  class="h-10 px-4 rounded-xl text-sm font-bold transition bg-ink-900 text-gold-300 hover:bg-gold-500 hover:text-ink-900">
+                    افزودن
+                </button>
+            </div>
+        </div>
+    </article>                                <article class="product-card group bg-white rounded-3xl overflow-hidden border border-ink-100 shadow-card reveal"
+             data-sku="N-202" data-cat="گردنبند" data-name="گردنبند اسم سفارشی"
+             data-price="17800000" data-stock="9" data-rating="4.6"
+             data-metal="زرد" data-karat="18" data-date="5">
+        <div class="relative overflow-hidden bg-cream">
+            <img src="assets/img/products/N-202.jpg" alt="گردنبند اسم سفارشی" loading="lazy"
+                 class="product-img w-full aspect-square object-cover ">
+            <span class="absolute top-3 start-3 rounded-full bg-ink-900 text-white text-[11px] font-bold px-2.5 py-1">سفارشی</span>
+            <button type="button"
+                    class="absolute bottom-3 end-3 h-10 w-10 grid place-items-center rounded-full bg-white/90 text-ink-700 shadow-soft opacity-0 group-hover:opacity-100 transition hover:text-rose-500 focus:opacity-100"
+                    title="افزودن به علاقه‌مندی‌ها" data-wish>
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.4-7-9.3A4 4 0 0 1 12 8a4 4 0 0 1 7 2.7C19 15.6 12 20 12 20z"/></svg>
+            </button>
+            
+        </div>
+        <div class="p-5">
+            <div class="flex items-center justify-between text-[11px] text-ink-400 mb-2">
+                <span class="rounded-md bg-ink-50 px-2 py-0.5">گردنبند</span>
+                <span>کد N-202</span>
+            </div>
+            <h3 class="font-bold text-ink-900 leading-7 line-clamp-2 min-h-[3.5rem]">
+                <a href="product-N-202.html" class="hover:text-gold-600 transition">گردنبند اسم سفارشی</a>
+            </h3>
+            <div class="flex items-center gap-2 mt-2 text-xs text-ink-400">
+                <span class="stars" style="--rating:4.6"></span>
+                <span>۴.۶</span>
+                <span class="text-ink-300">|</span>
+                <span>۸۷ نظر</span>
+            </div>
+            <div class="mt-4 flex items-end justify-between gap-2">
+                <div>
+                    
+                    <div class="price-now font-extrabold text-ink-900">۱۷٬۸۰۰٬۰۰۰ <span class="text-xs font-medium text-ink-500">تومان</span></div>
+                </div>
+                <button type="button" data-add="N-202"  class="h-10 px-4 rounded-xl text-sm font-bold transition bg-ink-900 text-gold-300 hover:bg-gold-500 hover:text-ink-900">
+                    افزودن
+                </button>
+            </div>
+        </div>
+    </article>                                <article class="product-card group bg-white rounded-3xl overflow-hidden border border-ink-100 shadow-card reveal"
+             data-sku="N-203" data-cat="گردنبند" data-name="زنجیر ورقه‌ای سفید مات"
+             data-price="31200000" data-stock="0" data-rating="4.5"
+             data-metal="سفید" data-karat="18" data-date="6">
+        <div class="relative overflow-hidden bg-cream">
+            <img src="assets/img/products/N-203.jpg" alt="زنجیر ورقه‌ای سفید مات" loading="lazy"
+                 class="product-img w-full aspect-square object-cover grayscale opacity-60">
+            
+            <button type="button"
+                    class="absolute bottom-3 end-3 h-10 w-10 grid place-items-center rounded-full bg-white/90 text-ink-700 shadow-soft opacity-0 group-hover:opacity-100 transition hover:text-rose-500 focus:opacity-100"
+                    title="افزودن به علاقه‌مندی‌ها" data-wish>
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.4-7-9.3A4 4 0 0 1 12 8a4 4 0 0 1 7 2.7C19 15.6 12 20 12 20z"/></svg>
+            </button>
+            <span data-stock-overlay class="absolute inset-0 grid place-items-center">
+        <span class="px-4 py-1.5 rounded-full bg-ink-900/85 text-white text-xs font-bold">ناموجود</span></span>
+        </div>
+        <div class="p-5">
+            <div class="flex items-center justify-between text-[11px] text-ink-400 mb-2">
+                <span class="rounded-md bg-ink-50 px-2 py-0.5">گردنبند</span>
+                <span>کد N-203</span>
+            </div>
+            <h3 class="font-bold text-ink-900 leading-7 line-clamp-2 min-h-[3.5rem]">
+                <a href="product-N-203.html" class="hover:text-gold-600 transition">زنجیر ورقه‌ای سفید مات</a>
+            </h3>
+            <div class="flex items-center gap-2 mt-2 text-xs text-ink-400">
+                <span class="stars" style="--rating:4.5"></span>
+                <span>۴.۵</span>
+                <span class="text-ink-300">|</span>
+                <span>۳۳ نظر</span>
+            </div>
+            <div class="mt-4 flex items-end justify-between gap-2">
+                <div>
+                    
+                    <div class="price-now font-extrabold text-ink-900">۳۱٬۲۰۰٬۰۰۰ <span class="text-xs font-medium text-ink-500">تومان</span></div>
+                </div>
+                <button type="button" data-add="N-203" disabled class="h-10 px-4 rounded-xl text-sm font-bold transition bg-ink-100 text-ink-400 cursor-not-allowed">
+                    ناموجود
+                </button>
+            </div>
+        </div>
+    </article>                                <article class="product-card group bg-white rounded-3xl overflow-hidden border border-ink-100 shadow-card reveal"
+             data-sku="E-301" data-cat="گوشواره" data-name="گوشواره مروارید آویز"
+             data-price="21300000" data-stock="4" data-rating="4.8"
+             data-metal="زرد" data-karat="18" data-date="7">
+        <div class="relative overflow-hidden bg-cream">
+            <img src="assets/img/products/E-301.jpg" alt="گوشواره مروارید آویز" loading="lazy"
+                 class="product-img w-full aspect-square object-cover ">
+            
+            <button type="button"
+                    class="absolute bottom-3 end-3 h-10 w-10 grid place-items-center rounded-full bg-white/90 text-ink-700 shadow-soft opacity-0 group-hover:opacity-100 transition hover:text-rose-500 focus:opacity-100"
+                    title="افزودن به علاقه‌مندی‌ها" data-wish>
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.4-7-9.3A4 4 0 0 1 12 8a4 4 0 0 1 7 2.7C19 15.6 12 20 12 20z"/></svg>
+            </button>
+            
+        </div>
+        <div class="p-5">
+            <div class="flex items-center justify-between text-[11px] text-ink-400 mb-2">
+                <span class="rounded-md bg-ink-50 px-2 py-0.5">گوشواره</span>
+                <span>کد E-301</span>
+            </div>
+            <h3 class="font-bold text-ink-900 leading-7 line-clamp-2 min-h-[3.5rem]">
+                <a href="product-E-301.html" class="hover:text-gold-600 transition">گوشواره مروارید آویز</a>
+            </h3>
+            <div class="flex items-center gap-2 mt-2 text-xs text-ink-400">
+                <span class="stars" style="--rating:4.8"></span>
+                <span>۴.۸</span>
+                <span class="text-ink-300">|</span>
+                <span>۹۶ نظر</span>
+            </div>
+            <div class="mt-4 flex items-end justify-between gap-2">
+                <div>
+                    
+                    <div class="price-now font-extrabold text-ink-900">۲۱٬۳۰۰٬۰۰۰ <span class="text-xs font-medium text-ink-500">تومان</span></div>
+                </div>
+                <button type="button" data-add="E-301"  class="h-10 px-4 rounded-xl text-sm font-bold transition bg-ink-900 text-gold-300 hover:bg-gold-500 hover:text-ink-900">
+                    افزودن
+                </button>
+            </div>
+        </div>
+    </article>                                <article class="product-card group bg-white rounded-3xl overflow-hidden border border-ink-100 shadow-card reveal"
+             data-sku="E-302" data-cat="گوشواره" data-name="گوشواره حلقه‌ای کوچک"
+             data-price="14700000" data-stock="8" data-rating="4.7"
+             data-metal="رزگلد" data-karat="18" data-date="8">
+        <div class="relative overflow-hidden bg-cream">
+            <img src="assets/img/products/E-302.jpg" alt="گوشواره حلقه‌ای کوچک" loading="lazy"
+                 class="product-img w-full aspect-square object-cover ">
+            <span class="absolute top-3 start-3 rounded-full bg-rose-600 text-white text-[11px] font-bold px-2.5 py-1">۹٪ تخفیف</span>
+            <button type="button"
+                    class="absolute bottom-3 end-3 h-10 w-10 grid place-items-center rounded-full bg-white/90 text-ink-700 shadow-soft opacity-0 group-hover:opacity-100 transition hover:text-rose-500 focus:opacity-100"
+                    title="افزودن به علاقه‌مندی‌ها" data-wish>
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.4-7-9.3A4 4 0 0 1 12 8a4 4 0 0 1 7 2.7C19 15.6 12 20 12 20z"/></svg>
+            </button>
+            
+        </div>
+        <div class="p-5">
+            <div class="flex items-center justify-between text-[11px] text-ink-400 mb-2">
+                <span class="rounded-md bg-ink-50 px-2 py-0.5">گوشواره</span>
+                <span>کد E-302</span>
+            </div>
+            <h3 class="font-bold text-ink-900 leading-7 line-clamp-2 min-h-[3.5rem]">
+                <a href="product-E-302.html" class="hover:text-gold-600 transition">گوشواره حلقه‌ای کوچک</a>
+            </h3>
+            <div class="flex items-center gap-2 mt-2 text-xs text-ink-400">
+                <span class="stars" style="--rating:4.7"></span>
+                <span>۴.۷</span>
+                <span class="text-ink-300">|</span>
+                <span>۱۵۴ نظر</span>
+            </div>
+            <div class="mt-4 flex items-end justify-between gap-2">
+                <div>
+                    <div class="text-xs text-ink-400 line-through">۱۶٬۲۰۰٬۰۰۰</div>
+                    <div class="price-now font-extrabold text-ink-900">۱۴٬۷۰۰٬۰۰۰ <span class="text-xs font-medium text-ink-500">تومان</span></div>
+                </div>
+                <button type="button" data-add="E-302"  class="h-10 px-4 rounded-xl text-sm font-bold transition bg-ink-900 text-gold-300 hover:bg-gold-500 hover:text-ink-900">
+                    افزودن
+                </button>
+            </div>
+        </div>
+    </article>                                <article class="product-card group bg-white rounded-3xl overflow-hidden border border-ink-100 shadow-card reveal"
+             data-sku="B-401" data-cat="دستبند" data-name="دستبند اسنیک ظریف"
+             data-price="39600000" data-stock="2" data-rating="4.9"
+             data-metal="زرد" data-karat="18" data-date="9">
+        <div class="relative overflow-hidden bg-cream">
+            <img src="assets/img/products/B-401.jpg" alt="دستبند اسنیک ظریف" loading="lazy"
+                 class="product-img w-full aspect-square object-cover ">
+            <span class="absolute top-3 start-3 rounded-full bg-ink-900 text-white text-[11px] font-bold px-2.5 py-1">جدید</span>
+            <button type="button"
+                    class="absolute bottom-3 end-3 h-10 w-10 grid place-items-center rounded-full bg-white/90 text-ink-700 shadow-soft opacity-0 group-hover:opacity-100 transition hover:text-rose-500 focus:opacity-100"
+                    title="افزودن به علاقه‌مندی‌ها" data-wish>
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.4-7-9.3A4 4 0 0 1 12 8a4 4 0 0 1 7 2.7C19 15.6 12 20 12 20z"/></svg>
+            </button>
+            
+        </div>
+        <div class="p-5">
+            <div class="flex items-center justify-between text-[11px] text-ink-400 mb-2">
+                <span class="rounded-md bg-ink-50 px-2 py-0.5">دستبند</span>
+                <span>کد B-401</span>
+            </div>
+            <h3 class="font-bold text-ink-900 leading-7 line-clamp-2 min-h-[3.5rem]">
+                <a href="product-B-401.html" class="hover:text-gold-600 transition">دستبند اسنیک ظریف</a>
+            </h3>
+            <div class="flex items-center gap-2 mt-2 text-xs text-ink-400">
+                <span class="stars" style="--rating:4.9"></span>
+                <span>۴.۹</span>
+                <span class="text-ink-300">|</span>
+                <span>۵۸ نظر</span>
+            </div>
+            <div class="mt-4 flex items-end justify-between gap-2">
+                <div>
+                    
+                    <div class="price-now font-extrabold text-ink-900">۳۹٬۶۰۰٬۰۰۰ <span class="text-xs font-medium text-ink-500">تومان</span></div>
+                </div>
+                <button type="button" data-add="B-401"  class="h-10 px-4 rounded-xl text-sm font-bold transition bg-ink-900 text-gold-300 hover:bg-gold-500 hover:text-ink-900">
+                    افزودن
+                </button>
+            </div>
+        </div>
+    </article>                                <article class="product-card group bg-white rounded-3xl overflow-hidden border border-ink-100 shadow-card reveal"
+             data-sku="B-402" data-cat="دستبند" data-name="دستبند تل نگین‌دار سفید"
+             data-price="30900000" data-stock="5" data-rating="4.6"
+             data-metal="سفید" data-karat="18" data-date="10">
+        <div class="relative overflow-hidden bg-cream">
+            <img src="assets/img/products/B-402.jpg" alt="دستبند تل نگین‌دار سفید" loading="lazy"
+                 class="product-img w-full aspect-square object-cover ">
+            
+            <button type="button"
+                    class="absolute bottom-3 end-3 h-10 w-10 grid place-items-center rounded-full bg-white/90 text-ink-700 shadow-soft opacity-0 group-hover:opacity-100 transition hover:text-rose-500 focus:opacity-100"
+                    title="افزودن به علاقه‌مندی‌ها" data-wish>
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.4-7-9.3A4 4 0 0 1 12 8a4 4 0 0 1 7 2.7C19 15.6 12 20 12 20z"/></svg>
+            </button>
+            
+        </div>
+        <div class="p-5">
+            <div class="flex items-center justify-between text-[11px] text-ink-400 mb-2">
+                <span class="rounded-md bg-ink-50 px-2 py-0.5">دستبند</span>
+                <span>کد B-402</span>
+            </div>
+            <h3 class="font-bold text-ink-900 leading-7 line-clamp-2 min-h-[3.5rem]">
+                <a href="product-B-402.html" class="hover:text-gold-600 transition">دستبند تل نگین‌دار سفید</a>
+            </h3>
+            <div class="flex items-center gap-2 mt-2 text-xs text-ink-400">
+                <span class="stars" style="--rating:4.6"></span>
+                <span>۴.۶</span>
+                <span class="text-ink-300">|</span>
+                <span>۴۷ نظر</span>
+            </div>
+            <div class="mt-4 flex items-end justify-between gap-2">
+                <div>
+                    
+                    <div class="price-now font-extrabold text-ink-900">۳۰٬۹۰۰٬۰۰۰ <span class="text-xs font-medium text-ink-500">تومان</span></div>
+                </div>
+                <button type="button" data-add="B-402"  class="h-10 px-4 rounded-xl text-sm font-bold transition bg-ink-900 text-gold-300 hover:bg-gold-500 hover:text-ink-900">
+                    افزودن
+                </button>
+            </div>
+        </div>
+    </article>                                <article class="product-card group bg-white rounded-3xl overflow-hidden border border-ink-100 shadow-card reveal"
+             data-sku="S-501" data-cat="ست طلا" data-name="ست گردنبند و گوشوارهٔ عروس"
+             data-price="52800000" data-stock="1" data-rating="5"
+             data-metal="زرد" data-karat="18" data-date="11">
+        <div class="relative overflow-hidden bg-cream">
+            <img src="assets/img/products/S-501.jpg" alt="ست گردنبند و گوشوارهٔ عروس" loading="lazy"
+                 class="product-img w-full aspect-square object-cover ">
+            <span class="absolute top-3 start-3 rounded-full bg-rose-600 text-white text-[11px] font-bold px-2.5 py-1">۹٪ تخفیف</span>
+            <button type="button"
+                    class="absolute bottom-3 end-3 h-10 w-10 grid place-items-center rounded-full bg-white/90 text-ink-700 shadow-soft opacity-0 group-hover:opacity-100 transition hover:text-rose-500 focus:opacity-100"
+                    title="افزودن به علاقه‌مندی‌ها" data-wish>
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.4-7-9.3A4 4 0 0 1 12 8a4 4 0 0 1 7 2.7C19 15.6 12 20 12 20z"/></svg>
+            </button>
+            
+        </div>
+        <div class="p-5">
+            <div class="flex items-center justify-between text-[11px] text-ink-400 mb-2">
+                <span class="rounded-md bg-ink-50 px-2 py-0.5">ست طلا</span>
+                <span>کد S-501</span>
+            </div>
+            <h3 class="font-bold text-ink-900 leading-7 line-clamp-2 min-h-[3.5rem]">
+                <a href="product-S-501.html" class="hover:text-gold-600 transition">ست گردنبند و گوشوارهٔ عروس</a>
+            </h3>
+            <div class="flex items-center gap-2 mt-2 text-xs text-ink-400">
+                <span class="stars" style="--rating:5"></span>
+                <span>۵.۰</span>
+                <span class="text-ink-300">|</span>
+                <span>۷۶ نظر</span>
+            </div>
+            <div class="mt-4 flex items-end justify-between gap-2">
+                <div>
+                    <div class="text-xs text-ink-400 line-through">۵۸٬۰۰۰٬۰۰۰</div>
+                    <div class="price-now font-extrabold text-ink-900">۵۲٬۸۰۰٬۰۰۰ <span class="text-xs font-medium text-ink-500">تومان</span></div>
+                </div>
+                <button type="button" data-add="S-501"  class="h-10 px-4 rounded-xl text-sm font-bold transition bg-ink-900 text-gold-300 hover:bg-gold-500 hover:text-ink-900">
+                    افزودن
+                </button>
+            </div>
+        </div>
+    </article>                                <article class="product-card group bg-white rounded-3xl overflow-hidden border border-ink-100 shadow-card reveal"
+             data-sku="P-601" data-cat="پابند" data-name="پابند پروانه‌ای ظریف"
+             data-price="23700000" data-stock="7" data-rating="4.7"
+             data-metal="زرد" data-karat="18" data-date="12">
+        <div class="relative overflow-hidden bg-cream">
+            <img src="assets/img/products/P-601.jpg" alt="پابند پروانه‌ای ظریف" loading="lazy"
+                 class="product-img w-full aspect-square object-cover ">
+            <span class="absolute top-3 start-3 rounded-full bg-ink-900 text-white text-[11px] font-bold px-2.5 py-1">جدید</span>
+            <button type="button"
+                    class="absolute bottom-3 end-3 h-10 w-10 grid place-items-center rounded-full bg-white/90 text-ink-700 shadow-soft opacity-0 group-hover:opacity-100 transition hover:text-rose-500 focus:opacity-100"
+                    title="افزودن به علاقه‌مندی‌ها" data-wish>
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20s-7-4.4-7-9.3A4 4 0 0 1 12 8a4 4 0 0 1 7 2.7C19 15.6 12 20 12 20z"/></svg>
+            </button>
+            
+        </div>
+        <div class="p-5">
+            <div class="flex items-center justify-between text-[11px] text-ink-400 mb-2">
+                <span class="rounded-md bg-ink-50 px-2 py-0.5">پابند</span>
+                <span>کد P-601</span>
+            </div>
+            <h3 class="font-bold text-ink-900 leading-7 line-clamp-2 min-h-[3.5rem]">
+                <a href="product-P-601.html" class="hover:text-gold-600 transition">پابند پروانه‌ای ظریف</a>
+            </h3>
+            <div class="flex items-center gap-2 mt-2 text-xs text-ink-400">
+                <span class="stars" style="--rating:4.7"></span>
+                <span>۴.۷</span>
+                <span class="text-ink-300">|</span>
+                <span>۶۹ نظر</span>
+            </div>
+            <div class="mt-4 flex items-end justify-between gap-2">
+                <div>
+                    
+                    <div class="price-now font-extrabold text-ink-900">۲۳٬۷۰۰٬۰۰۰ <span class="text-xs font-medium text-ink-500">تومان</span></div>
+                </div>
+                <button type="button" data-add="P-601"  class="h-10 px-4 rounded-xl text-sm font-bold transition bg-ink-900 text-gold-300 hover:bg-gold-500 hover:text-ink-900">
+                    افزودن
+                </button>
+            </div>
+        </div>
+    </article>                    </div>
+
+        <div id="emptyState" class="hidden text-center py-20 rounded-3xl bg-white border border-ink-100">
+            <div class="mx-auto h-16 w-16 grid place-items-center rounded-full bg-ink-100 text-ink-400 mb-4">
+                <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
+            </div>
+            <h3 class="text-lg font-extrabold text-ink-900">محصولی با این فیلترها پیدا نشد</h3>
+            <p class="text-sm text-ink-500 mt-2">فیلترها را تغییر دهید یا عبارت دیگری جست‌وجو کنید.</p>
+            <button type="button" id="clearFilters2" class="mt-5 px-6 py-3 rounded-xl bg-ink-900 text-gold-300 text-sm font-bold"
+                    onclick="document.getElementById('clearFilters').click()">نمایش همهٔ محصولات</button>
+        </div>
+    </section>
+</div>
+
+
+</main>
+
+<!-- نوار اعتماد -->
+<section class="border-t border-ink-100 bg-white">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 grid grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="flex items-start gap-3">
+            <span class="grid place-items-center h-11 w-11 rounded-xl bg-gold-100 text-gold-700 shrink-0">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v6c0 4.2-2.9 7.7-7 9-4.1-1.3-7-4.8-7-9V6z"/><path d="m9 12 2 2 4-4"/></svg>
+            </span>
+            <div>
+                <h3 class="font-bold text-sm text-ink-900">ضمانت اصالت کالا</h3>
+                <p class="text-xs text-ink-500 mt-1 leading-6">شناسهٔ آزمایشگاهی و فاکتور رسمی برای هر قلم</p>
+            </div>
+        </div>
+        <div class="flex items-start gap-3">
+            <span class="grid place-items-center h-11 w-11 rounded-xl bg-gold-100 text-gold-700 shrink-0">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="7" width="14" height="10" rx="2"/><path d="M16 10h3l3 3v4h-6z"/><circle cx="7" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg>
+            </span>
+            <div>
+                <h3 class="font-bold text-sm text-ink-900">ارسال بیمه‌شده رایگان</h3>
+                <p class="text-xs text-ink-500 mt-1 leading-6">تحویل در تهران همان‌روز، شهرستان ۲ تا ۳ روز</p>
+            </div>
+        </div>
+        <div class="flex items-start gap-3">
+            <span class="grid place-items-center h-11 w-11 rounded-xl bg-gold-100 text-gold-700 shrink-0">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>
+            </span>
+            <div>
+                <h3 class="font-bold text-sm text-ink-900">۷ روز بازگشت وجه</h3>
+                <p class="text-xs text-ink-500 mt-1 leading-6">تعویض یا بازخرید طلا بدون کسر اجرت ساخت</p>
+            </div>
+        </div>
+        <div class="flex items-start gap-3">
+            <span class="grid place-items-center h-11 w-11 rounded-xl bg-gold-100 text-gold-700 shrink-0">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 10h18M7 15h4"/></svg>
+            </span>
+            <div>
+                <h3 class="font-bold text-sm text-ink-900">پرداخت امن</h3>
+                <p class="text-xs text-ink-500 mt-1 leading-6">درگاه بانکی دارای مجوز، پشتیبانی از کیف پول</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- فوتر -->
+<footer class="bg-ink-900 text-ink-300">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+        <div>
+            <div class="flex items-center gap-3 mb-4">
+                <span class="grid place-items-center h-11 w-11 rounded-2xl bg-gradient-to-br from-gold-300 to-gold-600 text-ink-900 font-black">م</span>
+                <span class="font-extrabold text-lg text-white">طلای مهرگان</span>
+            </div>
+            <p class="text-sm leading-7 text-ink-400">طلافروشی و جواهرات دست‌ساز با بیش از ۲۰ سال تجربه، ضمانت اصالت و بازخرید تضمینی طلای شما.</p>
+            <div class="flex items-center gap-3 mt-5">
+                <a href="#" class="h-9 w-9 grid place-items-center rounded-lg bg-ink-800 hover:bg-gold-500 hover:text-ink-900 transition" aria-label="اینستاگرام">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+                </a>
+                <a href="#" class="h-9 w-9 grid place-items-center rounded-lg bg-ink-800 hover:bg-gold-500 hover:text-ink-900 transition" aria-label="واتساپ">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12a9 9 0 0 1-13.3 7.9L3 21l1.2-4.5A9 9 0 1 1 21 12z"/></svg>
+                </a>
+                <a href="#" class="h-9 w-9 grid place-items-center rounded-lg bg-ink-800 hover:bg-gold-500 hover:text-ink-900 transition" aria-label="تلگرام">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 4 3 11l5 2 2 6 3-4 5 4z"/></svg>
+                </a>
+            </div>
+        </div>
+
+        <div>
+            <h4 class="text-white font-bold mb-4">دسترسی سریع</h4>
+            <ul class="space-y-3 text-sm">
+                <li><a href="index.html" class="hover:text-gold-300 transition">خانه</a></li>
+                <li><a href="products.html" class="hover:text-gold-300 transition">همهٔ محصولات</a></li>
+                <li><a href="products.html?sort=new" class="hover:text-gold-300 transition">نو ورودی‌ها</a></li>
+                <li><a href="cart.html" class="hover:text-gold-300 transition">سبد خرید</a></li>
+                <li><a href="orders.html" class="hover:text-gold-300 transition">پیگیری سفارش</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h4 class="text-white font-bold mb-4">خدمات مشتریان</h4>
+            <ul class="space-y-3 text-sm">
+                <li><a href="#" class="hover:text-gold-300 transition">راهنمای سایز و خرید</a></li>
+                <li><a href="#" class="hover:text-gold-300 transition">شرایط بازگشت و تعویض</a></li>
+                <li><a href="#" class="hover:text-gold-300 transition">نحوهٔ محاسبهٔ قیمت طلا</a></li>
+                <li><a href="#" class="hover:text-gold-300 transition">پرسش‌های متداول</a></li>
+                <li><a href="admin.html" class="hover:text-gold-300 transition">ورود مدیر فروشگاه</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h4 class="text-white font-bold mb-4">ارتباط با ما</h4>
+            <ul class="space-y-3 text-sm">
+                <li class="flex items-start gap-2"><svg class="w-4 h-4 mt-1 shrink-0 text-gold-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>تهران، خیابان ولیعصر، نبش کوچهٔ ۱۲، پلاک ۴۵</li>
+                <li class="flex items-center gap-2"><svg class="w-4 h-4 shrink-0 text-gold-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5c0-1 1-2 2-2h2l2 5-2 1a12 12 0 0 0 5 5l1-2 5 2v2c0 1-1 2-2 2A16 16 0 0 1 4 5z"/></svg>۰۲۱-۹۱۰۰ ۱۲۳۴</li>
+                <li class="flex items-center gap-2"><svg class="w-4 h-4 shrink-0 text-gold-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>info@mehrghan-gold.ir</li>
+                <li class="text-ink-500 text-xs leading-6">شنبه تا چهارشنبه ۱۰ تا ۲۰ — پنجشنبه ۱۰ تا ۱۶</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="border-t border-ink-800">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-ink-500">
+            <p>© ۱۴۰۴ طلای مهرگان — تمامی حقوق محفوظ است.</p>
+            <p class="flex items-center gap-2">
+                <span class="px-2 py-1 rounded-md bg-ink-800 text-ink-300">نماد اعتماد الکترونیکی</span>
+                <span class="px-2 py-1 rounded-md bg-ink-800 text-ink-300">ساماندهی</span>
+            </p>
+        </div>
+    </div>
+</footer>
+
+<!-- اعلان‌ها -->
+<div id="toast" class="fixed bottom-6 start-1/2 -translate-x-1/2 rtl:translate-x-1/2 z-[60] hidden">
+    <div class="flex items-center gap-3 bg-ink-900 text-white px-5 py-3 rounded-2xl shadow-soft text-sm">
+        <span class="h-6 w-6 grid place-items-center rounded-full bg-gold-500 text-ink-900">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 13 4 4L19 7"/></svg>
+        </span>
+        <span id="toastText">به سبد خرید اضافه شد</span>
+    </div>
+</div>
+
+<script>
+    window.__PRODUCTS__ = [{"sku":"R-101","name":"انگشتر سولیتر نگین‌دار","price":22500000,"old":24900000,"stock":3,"img":"assets/img/products/R-101.jpg","cat":"انگشتر","weight":3.4,"karat":18},{"sku":"R-102","name":"انگشتر نامزدی رزگلد ظریف","price":18900000,"old":0,"stock":5,"img":"assets/img/products/R-102.jpg","cat":"انگشتر","weight":2.8,"karat":18},{"sku":"R-103","name":"انگشتر کلاسیک عیار ۲۱","price":33500000,"old":0,"stock":2,"img":"assets/img/products/R-103.jpg","cat":"انگشتر","weight":4.1,"karat":21},{"sku":"N-201","name":"گردنبند قلب آویز نگین‌دار","price":26400000,"old":28500000,"stock":6,"img":"assets/img/products/N-201.jpg","cat":"گردنبند","weight":4.6,"karat":18},{"sku":"N-202","name":"گردنبند اسم سفارشی","price":17800000,"old":0,"stock":9,"img":"assets/img/products/N-202.jpg","cat":"گردنبند","weight":3.2,"karat":18},{"sku":"N-203","name":"زنجیر ورقه‌ای سفید مات","price":31200000,"old":0,"stock":0,"img":"assets/img/products/N-203.jpg","cat":"گردنبند","weight":5.5,"karat":18},{"sku":"E-301","name":"گوشواره مروارید آویز","price":21300000,"old":0,"stock":4,"img":"assets/img/products/E-301.jpg","cat":"گوشواره","weight":3.6,"karat":18},{"sku":"E-302","name":"گوشواره حلقه‌ای کوچک","price":14700000,"old":16200000,"stock":8,"img":"assets/img/products/E-302.jpg","cat":"گوشواره","weight":2.4,"karat":18},{"sku":"B-401","name":"دستبند اسنیک ظریف","price":39600000,"old":0,"stock":2,"img":"assets/img/products/B-401.jpg","cat":"دستبند","weight":6.8,"karat":18},{"sku":"B-402","name":"دستبند تل نگین‌دار سفید","price":30900000,"old":0,"stock":5,"img":"assets/img/products/B-402.jpg","cat":"دستبند","weight":5.2,"karat":18},{"sku":"S-501","name":"ست گردنبند و گوشوارهٔ عروس","price":52800000,"old":58000000,"stock":1,"img":"assets/img/products/S-501.jpg","cat":"ست طلا","weight":8.9,"karat":18},{"sku":"P-601","name":"پابند پروانه‌ای ظریف","price":23700000,"old":0,"stock":7,"img":"assets/img/products/P-601.jpg","cat":"پابند","weight":4.2,"karat":18}];
+    window.__ORDERS__   = [];
+    window.__CART__     = [];
+    window.__CSRF__     = "a9b2cc6fd01e7e2e08be6ccc9d9b2ec477248177a7f21ee489781fef8690566d";
+    window.__ME__       = null;
+</script>
+    <script>window.__STATIC__ = true;</script>
+    <script src="assets/js/static.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

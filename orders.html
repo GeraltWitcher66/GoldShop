@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سفارش‌های من | طلای مهرگان</title>
+    <meta name="description" content="مشاهدهٔ وضعیت سفارش‌ها، کد رهگیری و جزئیات خرید.">
+    <meta name="theme-color" content="#14110d">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Vazirmatn', 'Tahoma', 'sans-serif'] },
+                    colors: {
+                        gold: { 50:'#fdfaf2', 100:'#f9f0dc', 200:'#f2dfb6', 300:'#e9c67c', 400:'#dcae4f', 500:'#c9913a', 600:'#a9741f', 700:'#87591a', 800:'#6b461b', 900:'#573a1a' },
+                        ink:  { 50:'#f6f5f3', 100:'#eae7e1', 200:'#d5cfc4', 300:'#b3aa9a', 400:'#8b8172', 500:'#6b6255', 600:'#514a41', 700:'#3b3630', 800:'#24211d', 900:'#14110d' },
+                        cream:'#faf7f1'
+                    },
+                    boxShadow: {
+                        soft: '0 10px 40px -18px rgba(20,17,13,.35)',
+                        card: '0 20px 50px -30px rgba(20,17,13,.55)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body class="bg-cream font-sans text-ink-800 antialiased selection:bg-gold-300 selection:text-ink-900">
+
+<!-- نوار بالا: نرخ طلا و اطلاعیه -->
+<div class="bg-ink-900 text-ink-200 text-[13px]">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-10 flex items-center justify-between gap-4">
+        <div class="flex items-center gap-2 overflow-hidden">
+            <span class="inline-block h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span class="text-ink-300 hidden sm:inline">نرخ لحظه‌ای طلا:</span>
+            <span class="text-gold-300 font-semibold" id="goldRate">۵٬۲۵۰٬۰۰۰</span>
+            <span class="text-ink-400">تومان / هر گرم ۱۸ عیار</span>
+        </div>
+        <div class="flex items-center gap-4">
+            <a href="tel:+982191001234" class="hidden sm:inline hover:text-gold-300 transition">پشتیبانی: ۰۲۱-۹۱۰۰ ۱۲۳۴</a>
+            <a href="orders.html" class="hover:text-gold-300 transition">پیگیری سفارش</a>
+        </div>
+    </div>
+</div>
+
+<!-- هدر اصلی -->
+<header id="siteHeader" class="sticky top-0 z-40 bg-cream/85 backdrop-blur border-b border-ink-100 transition-shadow">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="h-[74px] flex items-center gap-3 sm:gap-6">
+
+            <!-- لوگو -->
+            <a href="index.html" class="flex items-center gap-3 shrink-0 group">
+                <span class="grid place-items-center h-11 w-11 rounded-2xl bg-gradient-to-br from-gold-300 via-gold-400 to-gold-600 text-ink-900 font-black text-lg shadow-soft group-hover:rotate-6 transition-transform">م</span>
+                <span class="leading-tight">
+                    <span class="block font-extrabold text-lg text-ink-900">طلای مهرگان</span>
+                    <span class="block text-[11px] text-ink-400 tracking-wide">طلافروشی و جواهرات دست‌ساز</span>
+                </span>
+            </a>
+
+            <!-- منوی دسکتاپ -->
+            <nav class="hidden lg:flex items-center gap-1 me-auto">
+                <a href="index.html" class="px-3 py-2 rounded-lg text-sm font-medium text-ink-600 hover:text-ink-900 hover:bg-ink-50 transition ">خانه</a>
+                <a href="products.html" class="px-3 py-2 rounded-lg text-sm font-medium text-ink-600 hover:text-ink-900 hover:bg-ink-50 transition ">فروشگاه</a>
+                <a href="products.html?cat=%D8%B3%D8%AA%20%D8%B7%D9%84%D8%A7" class="px-3 py-2 rounded-lg text-sm font-medium text-ink-600 hover:text-ink-900 hover:bg-ink-50 transition">ست طلا</a>
+                <a href="orders.html" class="px-3 py-2 rounded-lg text-sm font-medium text-ink-600 hover:text-ink-900 hover:bg-ink-50 transition ">سفارش‌های من</a>
+                            </nav>
+
+            <!-- جست‌وجو -->
+            <form action="products.html" method="get" class="hidden md:flex items-center flex-1 max-w-sm ms-auto lg:ms-0">
+                <div class="relative w-full">
+                    <input type="search" name="q" value="" placeholder="جست‌وجوی انگشتر، گردنبند، کد کالا..."
+                           class="w-full h-11 rounded-xl border border-ink-200 bg-white ps-10 pe-4 text-sm placeholder:text-ink-400 focus:border-gold-400 focus:ring-4 focus:ring-gold-200/60 outline-none transition">
+                    <span class="pointer-events-none absolute inset-y-0 start-3 flex items-center text-ink-400">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
+                    </span>
+                </div>
+            </form>
+
+            <div class="flex items-center gap-1 ms-auto md:ms-0">
+                <!-- حساب کاربری -->
+                                    <a href="login.html" id="accountLink" class="hidden sm:grid place-items-center h-11 w-11 rounded-xl hover:bg-ink-100 text-ink-600 transition relative" title="حساب کاربری">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg>
+                    </a>
+                
+                <!-- سبد خرید -->
+                <a href="cart.html" class="grid place-items-center h-11 w-11 rounded-xl hover:bg-ink-100 text-ink-600 transition relative" title="سبد خرید">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 7h12l1.4 12.2a2 2 0 0 1-2 2.2H6.6a2 2 0 0 1-2-2.2z"/><path d="M9 10V6a3 3 0 0 1 6 0v4"/></svg>
+                    <span data-cart-count class="absolute -top-1 -start-1 min-w-[20px] h-5 px-1 grid place-items-center rounded-full bg-ink-200 text-ink-600 text-[11px] font-bold">۰</span>
+                </a>
+
+                <!-- منوی موبایل -->
+                <button type="button" id="menuBtn" class="lg:hidden grid place-items-center h-11 w-11 rounded-xl hover:bg-ink-100 text-ink-600 transition" aria-label="منو">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- جست‌وجوی موبایل -->
+        <form action="products.html" method="get" class="md:hidden pb-3">
+            <input type="search" name="q" value="" placeholder="جست‌وجوی محصول..."
+                   class="w-full h-11 rounded-xl border border-ink-200 bg-white px-4 text-sm placeholder:text-ink-400 focus:border-gold-400 focus:ring-4 focus:ring-gold-200/60 outline-none transition">
+        </form>
+    </div>
+</header>
+
+<!-- کشوی موبایل -->
+<div id="mobileMenu" class="fixed inset-0 z-50 hidden">
+    <div class="absolute inset-0 bg-ink-900/50 backdrop-blur-sm" data-close-menu></div>
+    <aside class="absolute inset-y-0 start-0 w-[82%] max-w-xs bg-cream shadow-2xl p-5 flex flex-col gap-1 slide-in">
+        <div class="flex items-center justify-between mb-4">
+            <span class="font-extrabold text-ink-900">منو</span>
+            <button type="button" class="h-9 w-9 grid place-items-center rounded-lg hover:bg-ink-100" data-close-menu aria-label="بستن">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+            </button>
+        </div>
+        <a href="index.html" class="px-3 py-3 rounded-xl hover:bg-ink-100 font-medium">خانه</a>
+        <a href="products.html" class="px-3 py-3 rounded-xl hover:bg-ink-100 font-medium">فروشگاه</a>
+        <a href="cart.html" class="px-3 py-3 rounded-xl hover:bg-ink-100 font-medium">سبد خرید</a>
+        <a href="orders.html" class="px-3 py-3 rounded-xl hover:bg-ink-100 font-medium">سفارش‌های من</a>
+                    <a href="login.html" class="px-3 py-3 rounded-xl hover:bg-ink-100 font-medium">ورود / ثبت‌نام</a>
+                        <div class="mt-auto pt-4 border-t border-ink-100 text-sm text-ink-500 leading-7">
+            ۰۲۱-۹۱۰۰ ۱۲۳۴<br>تهران، خیابان ولیعصر، نبش کوچهٔ ۱۲، پلاک ۴۵        </div>
+    </aside>
+</div>
+
+<main>
+
+<div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-8 lg:py-14" data-orders>
+
+    <nav class="text-xs text-ink-400 flex items-center gap-2 mb-6">
+        <a href="index.html" class="hover:text-gold-600 transition">خانه</a>
+        <span>/</span>
+        <span class="text-ink-700">سفارش‌های من</span>
+    </nav>
+
+    <div class="flex flex-wrap items-end justify-between gap-4">
+        <div>
+            <h1 class="text-2xl sm:text-4xl font-black text-ink-900">
+                سفارش‌های <span id="helloUser" class="text-gold-600">شما</span>
+            </h1>
+            <p class="text-ink-500 text-sm mt-2">وضعیت هر سفارش به‌روزرسانی می‌شود؛ کد رهگیری پستی نیز همین‌جا درج می‌گردد.</p>
+        </div>
+        <a href="products.html" class="px-5 py-3 rounded-2xl bg-ink-900 text-gold-300 text-sm font-bold hover:bg-gold-500 hover:text-ink-900 transition">
+            خرید جدید
+        </a>
+    </div>
+
+    <!-- کارت ورود برای مهمان -->
+    <div id="guestBox" class="mt-8 rounded-3xl border border-gold-200 bg-gradient-to-l from-gold-50 to-white p-6 flex flex-col sm:flex-row items-center justify-between gap-5">
+        <div class="flex items-center gap-4">
+            <span class="h-14 w-14 grid place-items-center rounded-2xl bg-ink-900 text-gold-300 shrink-0">
+                <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg>
+            </span>
+            <div>
+                <h2 class="font-extrabold text-ink-900">برای نمایش سفارش‌های خود وارد شوید</h2>
+                <p class="text-xs text-ink-500 mt-1 leading-6">سفارش‌های ثبت‌شده در این مرورگر به‌صورت محلی نمایش داده می‌شوند.</p>
+            </div>
+        </div>
+        <div class="flex gap-3 shrink-0">
+            <a href="login.html" class="px-5 py-3 rounded-xl bg-ink-900 text-gold-300 text-sm font-bold hover:bg-gold-500 hover:text-ink-900 transition">ورود</a>
+            <a href="register.html" class="px-5 py-3 rounded-xl border border-ink-200 text-sm font-bold text-ink-700 hover:border-gold-400 transition">ثبت‌نام</a>
+        </div>
+    </div>
+
+    <!-- لیست سفارش‌ها -->
+    <div id="orderList" class="mt-8 space-y-6"></div>
+
+    <div id="ordersEmpty" class="hidden text-center py-20 rounded-3xl bg-white border border-ink-100">
+        <div class="mx-auto h-16 w-16 grid place-items-center rounded-full bg-ink-100 text-ink-400 mb-4">
+            <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h16v13H4z"/><path d="M4 7l2-3h12l2 3M9 11h6"/></svg>
+        </div>
+        <h3 class="text-lg font-extrabold text-ink-900">هنوز سفارشی ثبت نکرده‌اید</h3>
+        <a href="products.html" class="inline-block mt-5 px-6 py-3 rounded-xl bg-ink-900 text-gold-300 text-sm font-bold">شروع خرید</a>
+    </div>
+
+    <!-- راهنمای پیگیری -->
+    <div class="mt-10 grid sm:grid-cols-3 gap-4">
+        <div class="rounded-2xl bg-white border border-ink-100 p-5">
+            <div class="text-xs font-bold text-gold-700">مرحلهٔ ۱</div>
+            <div class="font-extrabold text-sm text-ink-900 mt-1">تأیید و ساخت</div>
+            <p class="text-xs text-ink-500 leading-7 mt-2">کالا پس از تأیید پرداخت در کارگاه ساخته و کنترل کیفیت می‌شود.</p>
+        </div>
+        <div class="rounded-2xl bg-white border border-ink-100 p-5">
+            <div class="text-xs font-bold text-gold-700">مرحلهٔ ۲</div>
+            <div class="font-extrabold text-sm text-ink-900 mt-1">بسته‌بندی بیمه‌شده</div>
+            <p class="text-xs text-ink-500 leading-7 mt-2">بسته‌بندی مخملی همراه با بیمهٔ کامل ارزش کالا تا لحظهٔ تحویل.</p>
+        </div>
+        <div class="rounded-2xl bg-white border border-ink-100 p-5">
+            <div class="text-xs font-bold text-gold-700">مرحلهٔ ۳</div>
+            <div class="font-extrabold text-sm text-ink-900 mt-1">تحویل و رضایت</div>
+            <p class="text-xs text-ink-500 leading-7 mt-2">تحویل با کد رهگیری و امکان تعویض تا ۷ روز پس از دریافت.</p>
+        </div>
+    </div>
+</div>
+
+</main>
+
+<!-- نوار اعتماد -->
+<section class="border-t border-ink-100 bg-white">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 grid grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="flex items-start gap-3">
+            <span class="grid place-items-center h-11 w-11 rounded-xl bg-gold-100 text-gold-700 shrink-0">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v6c0 4.2-2.9 7.7-7 9-4.1-1.3-7-4.8-7-9V6z"/><path d="m9 12 2 2 4-4"/></svg>
+            </span>
+            <div>
+                <h3 class="font-bold text-sm text-ink-900">ضمانت اصالت کالا</h3>
+                <p class="text-xs text-ink-500 mt-1 leading-6">شناسهٔ آزمایشگاهی و فاکتور رسمی برای هر قلم</p>
+            </div>
+        </div>
+        <div class="flex items-start gap-3">
+            <span class="grid place-items-center h-11 w-11 rounded-xl bg-gold-100 text-gold-700 shrink-0">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="7" width="14" height="10" rx="2"/><path d="M16 10h3l3 3v4h-6z"/><circle cx="7" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg>
+            </span>
+            <div>
+                <h3 class="font-bold text-sm text-ink-900">ارسال بیمه‌شده رایگان</h3>
+                <p class="text-xs text-ink-500 mt-1 leading-6">تحویل در تهران همان‌روز، شهرستان ۲ تا ۳ روز</p>
+            </div>
+        </div>
+        <div class="flex items-start gap-3">
+            <span class="grid place-items-center h-11 w-11 rounded-xl bg-gold-100 text-gold-700 shrink-0">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>
+            </span>
+            <div>
+                <h3 class="font-bold text-sm text-ink-900">۷ روز بازگشت وجه</h3>
+                <p class="text-xs text-ink-500 mt-1 leading-6">تعویض یا بازخرید طلا بدون کسر اجرت ساخت</p>
+            </div>
+        </div>
+        <div class="flex items-start gap-3">
+            <span class="grid place-items-center h-11 w-11 rounded-xl bg-gold-100 text-gold-700 shrink-0">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 10h18M7 15h4"/></svg>
+            </span>
+            <div>
+                <h3 class="font-bold text-sm text-ink-900">پرداخت امن</h3>
+                <p class="text-xs text-ink-500 mt-1 leading-6">درگاه بانکی دارای مجوز، پشتیبانی از کیف پول</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- فوتر -->
+<footer class="bg-ink-900 text-ink-300">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+        <div>
+            <div class="flex items-center gap-3 mb-4">
+                <span class="grid place-items-center h-11 w-11 rounded-2xl bg-gradient-to-br from-gold-300 to-gold-600 text-ink-900 font-black">م</span>
+                <span class="font-extrabold text-lg text-white">طلای مهرگان</span>
+            </div>
+            <p class="text-sm leading-7 text-ink-400">طلافروشی و جواهرات دست‌ساز با بیش از ۲۰ سال تجربه، ضمانت اصالت و بازخرید تضمینی طلای شما.</p>
+            <div class="flex items-center gap-3 mt-5">
+                <a href="#" class="h-9 w-9 grid place-items-center rounded-lg bg-ink-800 hover:bg-gold-500 hover:text-ink-900 transition" aria-label="اینستاگرام">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+                </a>
+                <a href="#" class="h-9 w-9 grid place-items-center rounded-lg bg-ink-800 hover:bg-gold-500 hover:text-ink-900 transition" aria-label="واتساپ">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12a9 9 0 0 1-13.3 7.9L3 21l1.2-4.5A9 9 0 1 1 21 12z"/></svg>
+                </a>
+                <a href="#" class="h-9 w-9 grid place-items-center rounded-lg bg-ink-800 hover:bg-gold-500 hover:text-ink-900 transition" aria-label="تلگرام">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 4 3 11l5 2 2 6 3-4 5 4z"/></svg>
+                </a>
+            </div>
+        </div>
+
+        <div>
+            <h4 class="text-white font-bold mb-4">دسترسی سریع</h4>
+            <ul class="space-y-3 text-sm">
+                <li><a href="index.html" class="hover:text-gold-300 transition">خانه</a></li>
+                <li><a href="products.html" class="hover:text-gold-300 transition">همهٔ محصولات</a></li>
+                <li><a href="products.html?sort=new" class="hover:text-gold-300 transition">نو ورودی‌ها</a></li>
+                <li><a href="cart.html" class="hover:text-gold-300 transition">سبد خرید</a></li>
+                <li><a href="orders.html" class="hover:text-gold-300 transition">پیگیری سفارش</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h4 class="text-white font-bold mb-4">خدمات مشتریان</h4>
+            <ul class="space-y-3 text-sm">
+                <li><a href="#" class="hover:text-gold-300 transition">راهنمای سایز و خرید</a></li>
+                <li><a href="#" class="hover:text-gold-300 transition">شرایط بازگشت و تعویض</a></li>
+                <li><a href="#" class="hover:text-gold-300 transition">نحوهٔ محاسبهٔ قیمت طلا</a></li>
+                <li><a href="#" class="hover:text-gold-300 transition">پرسش‌های متداول</a></li>
+                <li><a href="admin.html" class="hover:text-gold-300 transition">ورود مدیر فروشگاه</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h4 class="text-white font-bold mb-4">ارتباط با ما</h4>
+            <ul class="space-y-3 text-sm">
+                <li class="flex items-start gap-2"><svg class="w-4 h-4 mt-1 shrink-0 text-gold-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>تهران، خیابان ولیعصر، نبش کوچهٔ ۱۲، پلاک ۴۵</li>
+                <li class="flex items-center gap-2"><svg class="w-4 h-4 shrink-0 text-gold-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5c0-1 1-2 2-2h2l2 5-2 1a12 12 0 0 0 5 5l1-2 5 2v2c0 1-1 2-2 2A16 16 0 0 1 4 5z"/></svg>۰۲۱-۹۱۰۰ ۱۲۳۴</li>
+                <li class="flex items-center gap-2"><svg class="w-4 h-4 shrink-0 text-gold-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>info@mehrghan-gold.ir</li>
+                <li class="text-ink-500 text-xs leading-6">شنبه تا چهارشنبه ۱۰ تا ۲۰ — پنجشنبه ۱۰ تا ۱۶</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="border-t border-ink-800">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-ink-500">
+            <p>© ۱۴۰۴ طلای مهرگان — تمامی حقوق محفوظ است.</p>
+            <p class="flex items-center gap-2">
+                <span class="px-2 py-1 rounded-md bg-ink-800 text-ink-300">نماد اعتماد الکترونیکی</span>
+                <span class="px-2 py-1 rounded-md bg-ink-800 text-ink-300">ساماندهی</span>
+            </p>
+        </div>
+    </div>
+</footer>
+
+<!-- اعلان‌ها -->
+<div id="toast" class="fixed bottom-6 start-1/2 -translate-x-1/2 rtl:translate-x-1/2 z-[60] hidden">
+    <div class="flex items-center gap-3 bg-ink-900 text-white px-5 py-3 rounded-2xl shadow-soft text-sm">
+        <span class="h-6 w-6 grid place-items-center rounded-full bg-gold-500 text-ink-900">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 13 4 4L19 7"/></svg>
+        </span>
+        <span id="toastText">به سبد خرید اضافه شد</span>
+    </div>
+</div>
+
+<script>
+    window.__PRODUCTS__ = [{"sku":"R-101","name":"انگشتر سولیتر نگین‌دار","price":22500000,"old":24900000,"stock":3,"img":"assets/img/products/R-101.jpg","cat":"انگشتر","weight":3.4,"karat":18},{"sku":"R-102","name":"انگشتر نامزدی رزگلد ظریف","price":18900000,"old":0,"stock":5,"img":"assets/img/products/R-102.jpg","cat":"انگشتر","weight":2.8,"karat":18},{"sku":"R-103","name":"انگشتر کلاسیک عیار ۲۱","price":33500000,"old":0,"stock":2,"img":"assets/img/products/R-103.jpg","cat":"انگشتر","weight":4.1,"karat":21},{"sku":"N-201","name":"گردنبند قلب آویز نگین‌دار","price":26400000,"old":28500000,"stock":6,"img":"assets/img/products/N-201.jpg","cat":"گردنبند","weight":4.6,"karat":18},{"sku":"N-202","name":"گردنبند اسم سفارشی","price":17800000,"old":0,"stock":9,"img":"assets/img/products/N-202.jpg","cat":"گردنبند","weight":3.2,"karat":18},{"sku":"N-203","name":"زنجیر ورقه‌ای سفید مات","price":31200000,"old":0,"stock":0,"img":"assets/img/products/N-203.jpg","cat":"گردنبند","weight":5.5,"karat":18},{"sku":"E-301","name":"گوشواره مروارید آویز","price":21300000,"old":0,"stock":4,"img":"assets/img/products/E-301.jpg","cat":"گوشواره","weight":3.6,"karat":18},{"sku":"E-302","name":"گوشواره حلقه‌ای کوچک","price":14700000,"old":16200000,"stock":8,"img":"assets/img/products/E-302.jpg","cat":"گوشواره","weight":2.4,"karat":18},{"sku":"B-401","name":"دستبند اسنیک ظریف","price":39600000,"old":0,"stock":2,"img":"assets/img/products/B-401.jpg","cat":"دستبند","weight":6.8,"karat":18},{"sku":"B-402","name":"دستبند تل نگین‌دار سفید","price":30900000,"old":0,"stock":5,"img":"assets/img/products/B-402.jpg","cat":"دستبند","weight":5.2,"karat":18},{"sku":"S-501","name":"ست گردنبند و گوشوارهٔ عروس","price":52800000,"old":58000000,"stock":1,"img":"assets/img/products/S-501.jpg","cat":"ست طلا","weight":8.9,"karat":18},{"sku":"P-601","name":"پابند پروانه‌ای ظریف","price":23700000,"old":0,"stock":7,"img":"assets/img/products/P-601.jpg","cat":"پابند","weight":4.2,"karat":18}];
+    window.__ORDERS__   = [];
+    window.__CART__     = [];
+    window.__CSRF__     = "a9b2cc6fd01e7e2e08be6ccc9d9b2ec477248177a7f21ee489781fef8690566d";
+    window.__ME__       = null;
+</script>
+    <script>window.__STATIC__ = true;</script>
+    <script src="assets/js/static.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
